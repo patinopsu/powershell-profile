@@ -1,6 +1,6 @@
 #Disable update notification
 $skipupdate = $false
-    
+
 if ($skipupdate) {
     Write-Host "############################################" -ForegroundColor Yellow
     Write-Host "#          Skip Update is enabled          #" -ForegroundColor Yellow
@@ -14,7 +14,7 @@ if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) 
 }
 
 #Check for update If $skipupdate = $false (I "borrow" the code from CTT's PowerShell-Profile)
-$global:conngh = Test-Connection github.com -Count 1 -Quiet -TimeoutSeconds 1
+$global:conngh = Test-Connection codeberg.org -Count 1 -Quiet -TimeoutSeconds 1
 #Check for PowerShell Profile Update
 function CheckPSProfileUpdate {
     try {
