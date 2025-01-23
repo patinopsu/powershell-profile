@@ -1,6 +1,6 @@
 #Disable update notification
 $skipupdate = $false
-
+    
 if ($skipupdate) {
     Write-Host "############################################" -ForegroundColor Yellow
     Write-Host "#          Skip Update is enabled          #" -ForegroundColor Yellow
@@ -236,6 +236,17 @@ function lz {
     }
     lazygit
 }
+
+function reload {
+    if ($experimental -eq $true) {
+        Write-Output "Experimental mode is enabled. Skipping profile reload."
+    } else {
+        Write-Output "Reloading the profile..."
+        Clear-Host
+        . $PROFILE
+    }
+}
+
 
 # Function to update all Programs
 function Update-AllPrograms {
