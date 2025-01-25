@@ -13,8 +13,6 @@ if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) 
     [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'true', [System.EnvironmentVariableTarget]::Machine)
 }
 
-#Check for update If $skipupdate = $false (I "borrow" the code from CTT's PowerShell-Profile)
-$global:conngh = Test-Connection codeberg.org -Count 1 -Quiet -TimeoutSeconds 1
 #Check for PowerShell Profile Update
 function CheckPSProfileUpdate {
     try {
