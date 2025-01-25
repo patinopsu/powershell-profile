@@ -15,10 +15,24 @@ if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) 
 
 #Check for PowerShell Profile Update
 function CheckPSProfileUpdate {
+    param (
+        [bool]$experimental = $true
+    )
     try {
-        $url = "https://codeberg.org/patinopsu/powershell-profile/raw/branch/main/Microsoft.PowerShell_profile.ps1"
+        if ($experimental) {
+            $branch = "experimental"
+            Write-Host "############################################" -ForegroundColor Red
+            Write-Host "#     EXPERIMENTAL BRANCH IS SELECTED      #" -ForegroundColor Red
+            Write-Host "#    You'll encounter some instablities    #  " -ForegroundColor Red
+            Write-Host "############################################"-ForegroundColor Red
+        } else {
+            $branch = "main"
+        }
+
+        $url = "https://github.com/patinopsu/powershell-profile/raw/refs/heads/$branch/Microsoft.PowerShell_profile.ps1"
         $currversion = Get-FileHash $PROFILE
         $tempFile = "$env:temp/msprofile.ps1"
+
         Invoke-WebRequest -Uri $url -OutFile $tempFile
         $newhash = Get-FileHash $tempFile
 
@@ -33,7 +47,6 @@ function CheckPSProfileUpdate {
         }
     }
 }
-
 
 
 #Function to update profile
