@@ -1,13 +1,3 @@
-#Disable update notification
-$skipupdate = $falseaaa
-
-if ($skipupdate) {
-    Write-Host "############################################" -ForegroundColor Yellow
-    Write-Host "#          Skip Update is enabled          #" -ForegroundColor Yellow
-    Write-Host "#  Any future update will not be notified  #  " -ForegroundColor Yellow
-    Write-Host "############################################"-ForegroundColor Yellow
-}
-
 #Disable Telemetry
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
     [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'true', [System.EnvironmentVariableTarget]::Machine)
@@ -97,10 +87,9 @@ function CheckPSUpdate {
     } 
 }
 
-if ($skipupdate) {} else {
-    CheckPSUpdate
-    CheckPSProfileUpdate
-}
+#Check for updates
+CheckPSUpdate
+CheckPSProfileUpdate
 
 Import-Module Terminal-Icons
 Import-Module PSReadLine
