@@ -1,5 +1,5 @@
 #Disable update notification
-$skipupdate = $false
+$skipupdate = $falseaaa
 
 if ($skipupdate) {
     Write-Host "############################################" -ForegroundColor Yellow
