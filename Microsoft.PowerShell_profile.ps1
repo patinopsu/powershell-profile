@@ -18,14 +18,11 @@ function CheckPSProfileUpdate {
         } else {
             $branch = "main"
         }
-
         $url = "https://github.com/patinopsu/powershell-profile/raw/refs/heads/$branch/Microsoft.PowerShell_profile.ps1"
         $currversion = Get-FileHash $PROFILE
         $tempFile = "$env:temp/msprofile.ps1"
-
         Invoke-WebRequest -Uri $url -OutFile $tempFile
         $newhash = Get-FileHash $tempFile
-
         if ($newhash.Hash -ne $currversion.Hash) {
             Write-Host "An (optional) update to the PowerShell Profile is available! Use Update-Profile to update" -ForegroundColor Yellow
         }
@@ -38,7 +35,6 @@ function CheckPSProfileUpdate {
     }
 }
 
-
 #Function to update profile
 function Update-Profile {
     $url = "https://codeberg.org/patinopsu/powershell-profile/raw/branch/main/Microsoft.PowerShell_profile.ps1"
@@ -50,7 +46,7 @@ function Update-Profile {
         if(-not (Get-ChildItem $backupfolder -ErrorAction SilentlyContinue)) {
             Write-Host "Backups folder not found. Creating a new one"
             mkdir $backupfolder >> null
-            New-Item $backupfolder/DONOTDELETE.CRITITCAL > $null
+            New-Item $backupfolder/DONOTDELETE > $null
             Write-Host "Folder successfully created! Please Re-Run the Update-Profile again" -ForegroundColor Green
             return
         } else {
