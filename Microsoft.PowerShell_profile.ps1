@@ -1,3 +1,9 @@
+#EOL Project
+Write-Host "#################################################"
+Write-Host "#     THIS PROJECT HAS BEEN PUT TO RESET        #"
+Write-Host "# This project will not recieve further updates #"
+Write-Host "#################################################"
+
 #Disable update notification
 $skipupdate = $false
 
