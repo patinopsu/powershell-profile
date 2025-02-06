@@ -1,3 +1,9 @@
+#EOL Project
+Write-Host "#################################################"
+Write-Host "#     THIS PROJECT HAS BEEN PUT TO RESET        #"
+Write-Host "# This project will not recieve further updates #"
+Write-Host "#################################################"
+
 #Disable Telemetry
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
     [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'true', [System.EnvironmentVariableTarget]::Machine)
@@ -107,7 +113,6 @@ Write-Host "Hello, $fullName! Welcome to your PowerShell session." -ForegroundCo
 Write-Host "For help, Invoke 'Get-Help' and all command available will show up" -ForegroundColor Cyan
 
 # Function to Initialize Oh My Posh
-function ompinit {
     if($global:ompinited) {
         Write-Host "oh-my-posh is already running." -ForegroundColor Red
         return
@@ -121,10 +126,6 @@ function ompinit {
     $configPath = Join-Path $HOME "Documents\PowerShell\omp-p.json"
     oh-my-posh init pwsh --config $configPath | Invoke-Expression
     $global:ompinited = $true
-}
-
-# Initialize Oh My Posh
-ompinit
 
 # Function to get public IP address
 function Get-PubAddr {
